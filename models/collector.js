@@ -10,6 +10,8 @@ Collector.prototype.buyRecord = function(record) {
   if (this.money >= record.price) {
     this.money -= record.price;
     this.collection.push(record);
+  } else {
+    return "Insufficient Cash"
   }
 }
 
@@ -37,11 +39,11 @@ Collector.prototype.sortRecods = function(order) {
   return _.orderBy(this.collection, "price", order);
 }
 
-Collector.prototype.compairBoolean = function(rivalCollector) {
+Collector.prototype.compareBoolean = function(rivalCollector) {
   return this.totalValue() > rivalCollector.totalValue();
 }
 
-Collector.prototype.compair = function(rivalCollector) {
+Collector.prototype.compare = function(rivalCollector) {
   if (this.totalValue() > rivalCollector.totalValue()) {
     return this;
   } else {
